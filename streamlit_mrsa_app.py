@@ -4,6 +4,9 @@ import numpy as np
 import joblib
 import os
 
+# --- Page Configuration (MUST BE THE FIRST STREAMLIT COMMAND) ---
+st.set_page_config(page_title="MRSA Infection Risk Predictor", layout="wide")
+
 # --- Configuration ---
 MODEL_PATH = "best_mrsa_prediction_model.joblib" # Relative path for Streamlit sharing
 UNIQUE_VALUES_PATH = "categorical_unique_values.txt" # Relative path
@@ -13,7 +16,7 @@ COMBINED_DATA_PATH = "combined_mrsa_hospital_data.csv" # Relative path for slide
 @st.cache_resource
 def load_model():
     if not os.path.exists(MODEL_PATH):
-        st.error(f"Model file 	'{MODEL_PATH}	' not found. Please ensure it's in the GitHub repository root along with the app script.")
+        st.error(f"Model file 	'{MODEL_PATH}'	 not found. Please ensure it's in the GitHub repository root along with the app script.")
         return None
     try:
         model = joblib.load(MODEL_PATH)
@@ -31,7 +34,7 @@ def load_unique_values():
     default_county = ["Unknown", "Alameda"]
 
     if not os.path.exists(UNIQUE_VALUES_PATH):
-        st.warning(f"Unique values file 	'{UNIQUE_VALUES_PATH}	' not found. Using default dropdown values.")
+        st.warning(f"Unique values file 	'{UNIQUE_VALUES_PATH}'	 not found. Using default dropdown values.")
         unique_vals["Infections_Predicted"] = default_infections_predicted
         unique_vals["Hospital_Category_RiskAdjustment"] = default_hospital_category
         unique_vals["County"] = default_county
@@ -54,7 +57,7 @@ def load_unique_values():
             if current_key and values_list: # Add the last key
                 unique_vals[current_key] = sorted(list(set(values_list)))
     except Exception as e:
-        st.error(f"Error reading 	'{UNIQUE_VALUES_PATH}	': {e}. Using default dropdown values.")
+        st.error(f"Error reading 	'{UNIQUE_VALUES_PATH}'	: {e}. Using default dropdown values.")
         unique_vals["Infections_Predicted"] = default_infections_predicted
         unique_vals["Hospital_Category_RiskAdjustment"] = default_hospital_category
         unique_vals["County"] = default_county
@@ -63,7 +66,7 @@ def load_unique_values():
     expected_keys = ["Infections_Predicted", "Hospital_Category_RiskAdjustment", "County"]
     for key in expected_keys:
         if key not in unique_vals or not unique_vals[key]:
-            st.warning(f"Key 	'{key}	' missing or empty in 	'{UNIQUE_VALUES_PATH}	'. Using default values for this dropdown.")
+            st.warning(f"Key 	'{key}'	 missing or empty in 	'{UNIQUE_VALUES_PATH}'. Using default values for this dropdown.")
             if key == "Infections_Predicted": unique_vals[key] = default_infections_predicted
             elif key == "Hospital_Category_RiskAdjustment": unique_vals[key] = default_hospital_category
             elif key == "County": unique_vals[key] = default_county
@@ -78,7 +81,7 @@ def load_data_for_sliders(data_path=COMBINED_DATA_PATH):
         "SIR": (0.0, 10.0, 1.0) # min, max, default/median
     }
     if not os.path.exists(data_path):
-        st.warning(f"Data file for slider ranges 	'{data_path}	' not found. Sliders will use default hardcoded ranges.")
+        st.warning(f"Data file for slider ranges 	'{data_path}'	 not found. Sliders will use default hardcoded ranges.")
         return min_max_vals
 
     try:
@@ -105,7 +108,7 @@ def load_data_for_sliders(data_path=COMBINED_DATA_PATH):
                     float(df_cleaned["SIR"].median())
                 )
     except Exception as e:
-        st.warning(f"Error processing 	'{data_path}	' for slider ranges: {e}. Using default hardcoded ranges.")
+        st.warning(f"Error processing 	'{data_path}'	 for slider ranges: {e}. Using default hardcoded ranges.")
     return min_max_vals
 
 # --- Initialize ---
@@ -113,8 +116,7 @@ model = load_model()
 unique_values = load_unique_values()
 min_max_slider_values = load_data_for_sliders()
 
-# --- App Layout ---
-st.set_page_config(page_title="MRSA Infection Risk Predictor", layout="wide")
+# --- App Layout (st.set_page_config is already called at the top) ---
 st.title("🔬 MRSA Infection Risk Predictor")
 st.markdown("""
 This application predicts the likelihood of a hospital having a 'Worse' than expected 
@@ -235,4 +237,3 @@ elif submit_button and not model:
 st.markdown("---")
 st.markdown("Developed by Manus AI for demonstration purposes.")
 st.markdown("Dataset Source: California Health and Human Services Open Data Portal (MRSA BSI Data)")
-
