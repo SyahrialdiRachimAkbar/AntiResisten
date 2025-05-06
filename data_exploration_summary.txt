@@ -1,0 +1,157 @@
+Found 12 hospital-related CSV files:
+- cdph_mrsa_bsi_odp_2018.csv
+- cdph_mrsa_bsi_odp_2019.csv
+- cdph_mrsa_bsi_odp_2020h1.csv
+- cdph_mrsa_bsi_odp_2020h2.csv
+- cdph_mrsa_bsi_odp_2021.csv
+- mrsa-in-hospitals-2013.csv
+- mrsa-in-hospitals-2014.csv
+- mrsa-in-hospitals-2015.csv
+- mrsa-in-hospitals-2016.csv
+- mrsa_bsi_2017_ca_cdph.csv
+- mrsa_bsi_odp_2022.csv
+- mrsa_bsi_odp_2023.csv
+
+Processing files...
+
+--- Reading: cdph_mrsa_bsi_odp_2018.csv ---
+Successfully read with latin1 after utf-8 failed.
+
+--- Reading: cdph_mrsa_bsi_odp_2019.csv ---
+Successfully read with latin1 after utf-8 failed.
+
+--- Reading: cdph_mrsa_bsi_odp_2020h1.csv ---
+Successfully read with utf-8.
+
+--- Reading: cdph_mrsa_bsi_odp_2020h2.csv ---
+Successfully read with latin1 after utf-8 failed.
+
+--- Reading: cdph_mrsa_bsi_odp_2021.csv ---
+Successfully read with utf-8.
+
+--- Reading: mrsa-in-hospitals-2013.csv ---
+Successfully read with utf-8.
+
+--- Reading: mrsa-in-hospitals-2014.csv ---
+Successfully read with utf-8.
+
+--- Reading: mrsa-in-hospitals-2015.csv ---
+Successfully read with utf-8.
+
+--- Reading: mrsa-in-hospitals-2016.csv ---
+Successfully read with latin1 after utf-8 failed.
+
+--- Reading: mrsa_bsi_2017_ca_cdph.csv ---
+Successfully read with latin1 after utf-8 failed.
+
+--- Reading: mrsa_bsi_odp_2022.csv ---
+Successfully read with latin1 after utf-8 failed.
+
+--- Reading: mrsa_bsi_odp_2023.csv ---
+Successfully read with latin1 after utf-8 failed.
+
+Concatenating 12 dataframes...
+Concatenated shape: (5238, 38)
+
+--- Initial Data Exploration ---
+
+* DataFrame Info:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5238 entries, 0 to 5237
+Data columns (total 38 columns):
+ #   Column                                  Non-Null Count  Dtype  
+---  ------                                  --------------  -----  
+ 0   Year                                    4882 non-null   object 
+ 1   State                                   5238 non-null   object 
+ 2   HAI                                     5238 non-null   object 
+ 3   Facility_ID                             4122 non-null   float64
+ 4   Facility_Name                           4158 non-null   object 
+ 5   County                                  5202 non-null   object 
+ 6   Hospital_Category_RiskAdjustment        3693 non-null   object 
+ 7   Hospital_Type                           2329 non-null   object 
+ 8   Infections_Reported                     4127 non-null   object 
+ 9   Infections_Predicted                    4131 non-null   object 
+ 10  Patient_Days                            5201 non-null   float64
+ 11  SIR                                     3172 non-null   float64
+ 12  SIR_CI_95_Lower_Limit                   3303 non-null   object 
+ 13  SIR_CI_95_Upper_Limit                   3303 non-null   object 
+ 14  Comparison                              3527 non-null   object 
+ 15  On_Track_Toward_2020_Goal (0.70, 2018)  338 non-null    object 
+ 16  SIR_2015                                1626 non-null   float64
+ 17  Months                                  3223 non-null   float64
+ 18  Notes                                   1225 non-null   object 
+ 19  Facility_Type                           1829 non-null   object 
+ 20  On_Track                                670 non-null    object 
+ 21  Met_2020_Goal                           1006 non-null   object 
+ 22  Year                                    356 non-null    float64
+ 23  Facility_Name1                          1080 non-null   object 
+ 24  Facility_Name2                          356 non-null    object 
+ 25  Facility_Name3                          356 non-null    object 
+ 26  FACID1                                  356 non-null    float64
+ 27  FACID2                                  356 non-null    object 
+ 28  FACID3                                  356 non-null    object 
+ 29  Infection_Count                         354 non-null    float64
+ 30  SIR                                     250 non-null    float64
+ 31  SIR_95%_CI_Lower_Limit                  250 non-null    float64
+ 32  SIR_95%_CI_Upper_Limit                  250 non-null    float64
+ 33  Facility_ID1                            724 non-null    float64
+ 34  Cases                                   358 non-null    float64
+ 35  Predicted_Cases                         696 non-null    float64
+ 36  Hospital_Onset_Cases                    362 non-null    float64
+ 37  Facility_Category                       465 non-null    object 
+dtypes: float64(15), object(23)
+memory usage: 1.5+ MB
+
+* Descriptive Statistics (Top 5 rows):
+          Year       State                                                                            HAI   Facility_ID         Facility_Name       County Hospital_Category_RiskAdjustment   Hospital_Type  Infections_Reported  Infections_Predicted  Patient_Days          SIR  SIR_CI_95_Lower_Limit SIR_CI_95_Upper_Limit Comparison On_Track_Toward_2020_Goal (0.70, 2018)     SIR_2015       Months                  Notes   Facility_Type On_Track Met_2020_Goal   Year                    Facility_Name1 Facility_Name2 Facility_Name3        FACID1 FACID2 FACID3  Infection_Count        SIR   SIR_95%_CI_Lower_Limit  SIR_95%_CI_Upper_Limit  Facility_ID1       Cases  Predicted_Cases  Hospital_Onset_Cases            Facility_Category
+count   4882.0        5238                                                                           5238  4.122000e+03                  4158         5202                             3693            2329               4127.0               4131.00  5.201000e+03  3172.000000                 3303.0                  3303       3527                                    338  1626.000000  3223.000000                   1225            1829      670          1006   356.0                             1080            356            356  3.560000e+02    356    356       354.000000  250.000000               250.00000              250.000000  7.240000e+02  358.000000       696.000000            362.000000                          465
+unique    11.0           1                                                                              2           NaN                   784           60                               13              23                 55.0               1021.00           NaN          NaN                  267.0                  1326          8                                      2          NaN          NaN                     14              22        2             2     NaN                              636             37              4           NaN     37      4              NaN         NaN                     NaN                     NaN           NaN         NaN              NaN                   NaN                            8
+top     2018.0  California  Methicillin-Resistant Staphylococcus aureus Bloodstream Infections (MRSA BSI)           NaN  Casa Colina Hospital  Los Angeles              Acute Care Hospital  Major Teaching                  0.0                  0.01           NaN          NaN                    0.0                             Same                                    Yes          NaN          NaN  ¥ See Data Dictionary  Major Teaching      Yes            No     NaN  Clovis Community Medical Center              .              .           NaN      .      .              NaN         NaN                     NaN                     NaN           NaN         NaN              NaN                   NaN  General Acute Care Hospital
+freq     471.0        5238                                                                           4158           NaN                    13         1295                             2618             476               1850.0                 98.00           NaN          NaN                  905.0                   131       2431                                    192          NaN          NaN                    938             324      367           582     NaN                                3            320            353           NaN    320    353              NaN         NaN                     NaN                     NaN           NaN         NaN              NaN                   NaN                          332
+mean       NaN         NaN                                                                            NaN  3.417186e+08                   NaN          NaN                              NaN             NaN                  NaN                   NaN  5.847031e+04     0.924685                    NaN                   NaN        NaN                                    NaN     0.984268    10.947254                    NaN             NaN      NaN           NaN  2013.0                              NaN            NaN            NaN  3.171073e+08    NaN    NaN         1.971751    1.141960                 0.23544                4.250880  3.207466e+08    1.969274         2.528190              2.116022                          NaN
+std        NaN         NaN                                                                            NaN  3.570067e+08                   NaN          NaN                              NaN             NaN                  NaN                   NaN  5.764142e+05     1.187749                    NaN                   NaN        NaN                                    NaN     1.142068     2.450822                    NaN             NaN      NaN           NaN     0.0                              NaN            NaN            NaN  3.473780e+08    NaN    NaN         2.933502    3.071313                 0.42859               12.104906  3.465379e+08    3.570287         3.119722              3.458951                          NaN
+min        NaN         NaN                                                                            NaN  3.000004e+07                   NaN          NaN                              NaN             NaN                  NaN                   NaN  0.000000e+00     0.000000                    NaN                   NaN        NaN                                    NaN     0.000000     0.000000                    NaN             NaN      NaN           NaN  2013.0                              NaN            NaN            NaN  3.000004e+07    NaN    NaN         0.000000    0.000000                 0.00000                0.400000  3.000004e+07    0.000000         0.000000              0.000000                          NaN
+25%        NaN         NaN                                                                            NaN  7.000014e+07                   NaN          NaN                              NaN             NaN                  NaN                   NaN  6.864000e+03     0.000000                    NaN                   NaN        NaN                                    NaN     0.000000    12.000000                    NaN             NaN      NaN           NaN  2013.0                              NaN            NaN            NaN  6.000156e+07    NaN    NaN         0.000000    0.362500                 0.02000                1.652500  6.000116e+07    0.000000         0.640000              0.000000                          NaN
+50%        NaN         NaN                                                                            NaN  1.400004e+08                   NaN          NaN                              NaN             NaN                  NaN                   NaN  2.065800e+04     0.640000                    NaN                   NaN        NaN                                    NaN     0.700000    12.000000                    NaN             NaN      NaN           NaN  2013.0                              NaN            NaN            NaN  1.400002e+08    NaN    NaN         1.000000    0.760000                 0.11500                2.420000  1.400002e+08    1.000000         1.610000              1.000000                          NaN
+75%        NaN         NaN                                                                            NaN  6.300164e+08                   NaN          NaN                              NaN             NaN                  NaN                   NaN  4.988200e+04     1.300000                    NaN                   NaN        NaN                                    NaN     1.497500    12.000000                    NaN             NaN      NaN           NaN  2013.0                              NaN            NaN            NaN  6.300113e+08    NaN    NaN         3.000000    1.250000                 0.32000                3.740000  6.300120e+08    2.000000         3.152500              3.000000                          NaN
+max        NaN         NaN                                                                            NaN  9.300017e+08                   NaN          NaN                              NaN             NaN                  NaN                   NaN  1.587233e+07    16.290000                    NaN                   NaN        NaN                                    NaN     8.750000    12.000000                    NaN             NaN      NaN           NaN  2013.0                              NaN            NaN            NaN  9.300017e+08    NaN    NaN        19.000000   44.440000                 5.38000              160.550000  9.300017e+08   32.000000        24.240000             25.000000                          NaN
+* Missing Value Counts:
+Year                                       356
+State                                        0
+HAI                                          0
+Facility_ID                               1116
+Facility_Name                             1080
+County                                      36
+Hospital_Category_RiskAdjustment          1545
+Hospital_Type                             2909
+Infections_Reported                       1111
+Infections_Predicted                      1107
+Patient_Days                                37
+SIR                                       2066
+SIR_CI_95_Lower_Limit                     1935
+SIR_CI_95_Upper_Limit                     1935
+Comparison                                1711
+On_Track_Toward_2020_Goal (0.70, 2018)    4900
+SIR_2015                                  3612
+Months                                    2015
+Notes                                     4013
+Facility_Type                             3409
+On_Track                                  4568
+Met_2020_Goal                             4232
+Year                                      4882
+Facility_Name1                            4158
+Facility_Name2                            4882
+Facility_Name3                            4882
+FACID1                                    4882
+FACID2                                    4882
+FACID3                                    4882
+Infection_Count                           4884
+SIR                                       4988
+SIR_95%_CI_Lower_Limit                    4988
+SIR_95%_CI_Upper_Limit                    4988
+Facility_ID1                              4514
+Cases                                     4880
+Predicted_Cases                           4542
+Hospital_Onset_Cases                      4876
+Facility_Category                         4773
+Combined data saved to /home/ubuntu/combined_mrsa_hospital_data.csv
