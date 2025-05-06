@@ -5,8 +5,8 @@ import joblib
 import os
 
 # --- Configuration ---
-MODEL_PATH = "/home/ubuntu/best_mrsa_prediction_model.joblib"
-UNIQUE_VALUES_PATH = "/home/ubuntu/categorical_unique_values.txt" # To load options for selectboxes
+MODEL_PATH = "best_mrsa_prediction_model.joblib"
+UNIQUE_VALUES_PATH = "categorical_unique_values.txt" # To load options for selectboxes
 
 # --- Load Model and Unique Values for Inputs ---
 @st.cache_resource # Cache the model loading
